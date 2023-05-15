@@ -1,9 +1,14 @@
 #include <vector>
-#include "in_out.h"
+#include <sstream>
+#include <iostream>
+
+#include "modeling.h"
 
 using namespace std;
 
 int main() {
-  parse_inputs(read_inputs());
-  print_readings();
+  read_inputs(); 
+  //print_readings();
+  print_object_function();
+  print_restrictions();
 }

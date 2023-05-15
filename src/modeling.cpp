@@ -18,7 +18,7 @@ bool is_number(std::string s) {
 long long calc_product_cost(long long i) {
     long long c = 0;
     for ( long long j = 0; j < M; j++ ) {
-      c += PARSE_FIXED(C[i][j] * P [j]);
+      c += MULTIPLY_FIXED(C[i][j] * P[j]);
     }
 
   return c;

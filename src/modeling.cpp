@@ -84,18 +84,22 @@ void print_readings() {
   std::cout << N << " " << M << "\n";
 
   for ( long long vi : V ) { 
-    std::cout << PRINT_FIXED(vi) << " "; 
+    print_fixed(vi);
+    std::cout << " "; 
   }
   std::cout << "\n";
 
   for ( long long j = 0; j < M; j++ ) { 
-    std::cout << PRINT_FIXED(P[j]) << " " ;
-    std::cout << PRINT_FIXED(Q[j]) << "\n"; 
+    print_fixed(P[j]);
+    std::cout << " " ;
+    print_fixed(Q[j]);
+    std::cout << "\n"; 
   }
 
   for ( auto vc : C ) { 
     for ( auto cij : vc ) { 
-      std::cout << PRINT_FIXED(cij) << " "; 
+      print_fixed(cij);
+      std::cout << " ";
     } 
     std::cout << "\n";
   }
@@ -107,13 +111,17 @@ void print_object_function() {
 
   if ( profit < 0 ) { profit = -profit; signal = "-"; } 
   else { signal = ""; }
-  std::cout << "max: " << signal << PRINT_FIXED(profit) << "x" << std::to_string(1);
+  std::cout << "max: " << signal;
+  print_fixed(profit);
+  std::cout << "x" << std::to_string(1);
 
   for ( long long i = 1; i < N; i++ ) {
     profit = calc_profit(i); 
     if ( profit < 0 ) { profit = -profit; signal = " - "; } 
     else { signal = " + "; }
-    std::cout << signal << PRINT_FIXED(profit) << "x" << std::to_string(i+1); 
+    std::cout << signal; 
+    print_fixed(profit); 
+    std::cout << "x" << std::to_string(i+1); 
   } 
     
   std::cout << ";\n";
@@ -126,19 +134,25 @@ void print_restrictions() {
     long long c = C[0][j];
     if ( c < 0 ) { c = -c; signal = "-"; }
     else { signal = ""; }
-    std::cout << signal << PRINT_FIXED(c) << "x" << std::to_string(1);
+    std::cout << signal; 
+    print_fixed(c); 
+    std::cout << "x" << std::to_string(1);
 
     for ( long long i = 1; i < N; i++ ) {
        c = C[i][j];
        if ( c < 0 ) { c = -c; signal = " - "; }
        else { signal = " + "; }
-      std::cout << signal << PRINT_FIXED(c) << "x" << std::to_string(i+1);    
+      std::cout << signal; 
+      print_fixed(c); 
+      std::cout << "x" << std::to_string(i+1);    
     }
     
     long long q = Q[j];
     if ( q < 0 ) { q = -q; signal = "-"; }
     else { signal = ""; }
-    std::cout << " < " << signal << PRINT_FIXED(q) << ";\n";
+    std::cout << " < " << signal; 
+    print_fixed(q);
+    std::cout << ";\n";
   }
 }
 

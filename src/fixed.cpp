@@ -1,3 +1,4 @@
+#include <iostream>
 #include "fixed.h"
 
 long long parse_string_to_longlong(std::vector<std::string>& input) {
@@ -53,4 +54,31 @@ std::vector<long long> parse_vector_of_fixed(std::vector<std::string>& input, lo
   for ( long long i = 0; i < size; i++ ) { v[i] = parse_string_to_fixed(input); }
 
   return v;
+}
+
+void print_fixed(long long n) {
+  std::cout << n / PRECISION << ".";
+
+  long long power = PRECISION;
+  
+  while ( power > 1 ) {
+    long long tmp = n % power;
+    power /= 10;
+    long long dig = tmp / power;
+    std::cout << dig;
+  }
+
+  // long long tmp = n%PRECISION, size = 0;
+  // while ( tmp != 0 ) {
+  //   size++;
+  //   tmp /= 10;
+  // }
+
+  // if ( 0 < size && size < PRECISION_DECIMAL_PLACE ) { 
+  //   for ( int i = 0; i < PRECISION_DECIMAL_PLACE - size; i++ ) {
+  //     std::cout << "0";
+  //   }
+  // }
+
+  // std::cout << n % PRECISION;
 }

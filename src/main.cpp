@@ -7,7 +7,7 @@
 using namespace std;
 
 int main() {
-  read_inputs(); 
+  if ( read_inputs() == READING_ERROR ) { return READING_ERROR; } 
   //print_readings();
   print_object_function();
   print_restrictions();

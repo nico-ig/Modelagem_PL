@@ -1,12 +1,16 @@
 #include "fixed.h"
 
 long long parse_string_to_longlong(std::vector<std::string>& input) {
-  long long res = 0;
+  long long res = 0, negative_cnt = 0;
   std::string ss = input[0];
-  for ( char c : ss ) { res = res * 10 + (c - '0'); }
+  for ( char c : ss ) { 
+    if ( c == '-' ) { negative_cnt++; }
+    else { res = res * 10 + (c - '0'); }
+  }
   
   input.erase(input.begin());
-  return res;
+
+  return negative_cnt % 2 == 0 ? res : -res; 
 }
 
 long long parse_string_to_decimal(std::vector<std::string>& input) {
@@ -36,7 +40,8 @@ long long parse_string_to_fixed(std::vector<std::string>& input) {
 
   if ( dot_pos != std::string::npos ) {
     std::vector<std::string> frac_part{input[0].substr(dot_pos + 1)};
-    res += parse_string_to_decimal(frac_part); 
+    if ( res >= 0 ) { res += parse_string_to_decimal(frac_part); }
+    else { res -= parse_string_to_decimal(frac_part); }
   } 
 
   input.erase(input.begin());

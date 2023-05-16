@@ -4,8 +4,8 @@
 #include <vector>
 #include <string>
 
-#define PRECISION 100
-#define PRECISION_DECIMAL_PLACE 2
+#define PRECISION 1000
+#define PRECISION_DECIMAL_PLACE 3
 #define PRINT_FIXED(n) (std::to_string((n)/PRECISION)+"."+std::to_string((n)%PRECISION))
 #define MULTIPLY_FIXED(n) (n/PRECISION)
 
